@@ -1,0 +1,24 @@
+.profile__spec {
+  grid-area: spec;
+  margin:0;
+  font-size: 18px;
+  line-height: 1.21;
+  font-weight: 400;
+  max-height: 18px;
+}
+
+@media screen and (max-width: 768px) {
+    .profile__spec {
+      font-size: calc(100vw/112 + (78px/7));
+      line-height: calc(121*100vw/11200 + (4719px/350));
+      max-height: calc(100vw/112 + (78px/7));
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile__spec {
+      font-size: 14px;
+      line-height: 1.21;
+      max-height: 14px;
+    }
+}

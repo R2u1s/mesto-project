@@ -1,0 +1,28 @@
+.popup__title {
+    margin: 0 0 54px;
+    max-width: 100%;
+    max-height: 23px;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29.05px;
+    color:black;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 640px) {
+    .popup__title {
+      font-size: calc(3*100vw/160 + 12px);
+      line-height: calc(727*100vw/32000 + (1451px/100));
+      max-height: calc(100vw/160 + 20px);
+      margin-bottom: calc(96px - (21*100vw/320));
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    .popup__title {
+      font-size: 18px;
+      line-height: 1.21;
+      max-height: 22px;
+      margin-bottom: 75px;
+    }
+  }

@@ -1,0 +1,15 @@
+.cards__pseudo {
+  display: inline-block; /* элемент span теперь сможет принимать определённую ширину и высоту */
+  vertical-align: middle; /* элемент и текст будут правильно выровнены по вертикали. Работает в паре с inline-block */
+  width: 22px;
+  height: 19px; /* размеры */
+  cursor: pointer;
+  background-image: url(../../../images/like-dis.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cards__pseudo:hover {
+  opacity: 60%;
+}

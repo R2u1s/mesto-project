@@ -1,0 +1,27 @@
+.profile__name {
+  grid-area: name;
+  margin:0;
+  max-width: 294px;
+  max-height: 39px;
+  font-size: 42px;
+  line-height: 1.14;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 768px) {
+    .profile__name {
+      font-size: calc(15*100vw/448 + (114px/7));
+      line-height: calc(383*100vw/11200 + (3804px/175));
+      max-height: calc(13*100vw/288 + (13px/3));
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+      .profile__name {
+        font-size: 27px;
+        line-height: 1.21;
+        margin-left: 28px;
+        max-height: 26px;
+      }
+    }

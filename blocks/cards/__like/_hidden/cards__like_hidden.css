@@ -1,0 +1,23 @@
+.cards__like_hidden {
+  position:absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.cards__like_hidden:checked + .cards__pseudo-checkbox {
+    background-image: url(../../../../images/like-act.svg);
+  }
+  
+.cards__like_hidden:disabled + .cards__pseudo-checkbox {
+    border:1px solid grey;
+  }
+  
+.cards__like_hidden:disabled:hover + .cards__pseudo-checkbox {
+    opacity: 60%;
+  }
+  
+.cards__like_hidden:disabled:checked + .cards__pseudo-checkbox {
+    background-image: url(../../../../images/like-dis.svg);
+  }

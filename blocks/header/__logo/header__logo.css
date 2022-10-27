@@ -1,0 +1,30 @@
+.header__logo {
+  margin:0;
+  max-width: 142px;
+  aspect-ratio: calc(142/33);
+}
+
+@media screen and (max-width: 934px) {
+  .header__logo {
+    margin-left: calc(467px - (100vw/2));
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .header__logo {
+    margin-left: 27px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+    .header__logo {
+      max-width: calc(1913*100vw/22400 + (13372px/175));
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    .header__logo {
+      max-width: 103.74px;
+    }
+  }
