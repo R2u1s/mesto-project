@@ -15,3 +15,19 @@
     margin-left: 19px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding-top: calc(19*100vw/448 + (241px/7));
+    padding-bottom: calc(3*100vw/56 + (132px/7));
+    font-size: calc(100vw/112 + (78px/7));
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer {
+    padding-top: 48px;
+    padding-bottom: 36px;
+    font-size: 14px;
+  }
+}

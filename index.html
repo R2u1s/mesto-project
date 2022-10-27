@@ -20,100 +20,79 @@
           <img src="./images/Jacques.jpg" class="profile__avatar" alt="Жак-Ив Кусто в красной шапке">
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <h2 class="profile__spec">Исследователь океана</h2>
-            <a href="" class="profile__edit"></a>
+            <p class="profile__spec">Исследователь океана</p>
+            <button href="" class="profile__edit"></button>
           </div>
         </div>
         <a href="" class="profile__add"></a>
       </section>
 
-      <ul class="cards">
-
+      <section class="cards">
+      <ul class="cards__cards-list">
         <li class="cards__card">
-          <div class="cards__image cards__image_karachayevsk">
-          </div>
+          <img class="cards__image" src="./images/Karachaevo.jpg" alt="Старая постройка в горах">
           <div class="cards__name">
             <h3 class="cards__title">Карачаево-Черкесия</h3>
-              <label for="karachayevsk">
-              <input type="checkbox" id="karachayevsk" value="karachayevsk" class="cards__like cards__like_hidden">
-              <span class="cards__pseudo cards__pseudo-checkbox"></span>
-              </label>
+            <button type="button" class="cards__like cards__like_active"></button>
           </div>
         </li>
         <li class="cards__card">
-          <div class="cards__image cards__image_elbrus">
-          </div>
+          <img class="cards__image" src="./images/elbrus.png" alt="Горы вдалеке на фоне заката">
           <div class="cards__name">
             <h3 class="cards__title">Гора Эльбрус</h3>
-              <label for="elbrus">
-              <input type="checkbox" name="extra-option" id="elbrus" value="elbrus" class="cards__like cards__like_hidden">
-              <span class="cards__pseudo cards__pseudo-checkbox"></span>
-              </label>
+            <button type="button" class="cards__like cards__like_active"></button>
           </div>
         </li>
           <li class="cards__card">
-          <div class="cards__image cards__image_dombay">
-          </div>
+          <img class="cards__image" src="./images/dombay.png" alt="Осенний лес на фоне снежных гор">
           <div class="cards__name">
             <h3 class="cards__title">Домбай</h3>
-              <label for="dombay">
-              <input type="checkbox" name="extra-option" id="dombay" value="dombay" class="cards__like cards__like_hidden">
-              <span class="cards__pseudo cards__pseudo-checkbox"></span>
-              </label>
+            <button type="button" class="cards__like cards__like_active"></button>
           </div>
         </li>
           
           <li class="cards__card">
-          <div class="cards__image cards__image_altai">
-          </div>
+          <img class="cards__image" src="./images/altai.JPG" alt="Прозрачное озеро, по бокам скалистые берега">
           <div class="cards__name">
             <h3 class="cards__title">Алтай</h3>
-              <label for="Altai">
-              <input type="checkbox" name="extra-option" id="Altai" value="Altai" class="cards__like cards__like_hidden">
-              <span class="cards__pseudo cards__pseudo-checkbox"></span>
-              </label>
+            <button type="button" class="cards__like cards__like_active"></button>
           </div>
         </li>
           
           <li class="cards__card">
-          <div class="cards__image cards__image_yakutia">
-          </div>
+          <img class="cards__image" src="./images/yakutia.JPG" alt="Деревья в снегу, на фоне снежных сопок">
           <div class="cards__name">
             <h3 class="cards__title">Якутия</h3>
-              <label for="yakutia">
-              <input type="checkbox" name="extra-option" id="yakutia" value="yakutia" class="cards__like cards__like_hidden">
-              <span class="cards__pseudo cards__pseudo-checkbox"></span>
-              </label>
+            <button type="button" class="cards__like cards__like_active"></button>
           </div>
         </li>
           
           <li class="cards__card">
-          <div class="cards__image cards__image_kamchatka">
-          </div>
+          <img class="cards__image" src="./images/kamchatka.JPG" alt="Отражение горы в озере на закате">
           <div class="cards__name">
             <h3 class="cards__title">Камчатка</h3>
-              <label for="kamchatka">
-              <input type="checkbox" name="extra-option" id="kamchatka" value="kamchatka" class="cards__like cards__like_hidden">
-              <span class="cards__pseudo cards__pseudo-checkbox"></span>
-              </label>
+            <button type="button" class="cards__like cards__like_active"></button>
           </div>
         </li>
         </ul>
+        </section>
     </main>
 
-    <footer class="footer">© 2020 Mesto Russia</footer>
+    <footer class="footer">
+      <p>© 2020 Mesto Russia</p>
+    </footer>
     
     <div class="popup">
-    <form class="popup__container">
+    <form class="popup__container" name="edit">
         <h2 class="popup__title">Редактировать профиль</h2>
         <fieldset class="popup__form">
-          <input type="text" value="Жак-Ив Кусто" class="popup__input">
-          <input type="text" value="Исследователь океана" class="popup__input">
+          <input type="text" value="Жак-Ив Кусто" name="name" class="popup__input">
+          <input type="text" value="Исследователь океана" name="spec" class="popup__input">
         </fieldset>
         <fieldset class="popup__handlers">
           <input type="submit" value="Сохранить" class="popup__button">
         </fieldset>
-        <a href="" class="popup__close-button"></a>
+        <button href="" class="popup__close-button"></button>
     </form>
     </div>
    

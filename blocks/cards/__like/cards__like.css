@@ -1,11 +1,14 @@
 .cards__like {
-  border: 0;
-  width: 100%;
-  height: 24px;
-  box-sizing: border-box;
-  border-bottom: 1px solid #bcbcc4;
-  background-color: transparent;
-  margin-top: 5px;
-  font-size: 14px;
-  font-family: inherit;
+  width: 22px;
+  height: 19px;
+  cursor: pointer;
+  background-image: url(../../../images/like-dis.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+.cards__like:hover {
+  opacity: 60%;
 }

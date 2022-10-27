@@ -1,7 +1,6 @@
 .popup__container {
   max-width: 358px;
-  min-height: fit-content;
-  margin: 195px auto 0;
+  margin: auto;
   padding-top: 34px;
   padding-left: 36px;
   padding-right: 36px;

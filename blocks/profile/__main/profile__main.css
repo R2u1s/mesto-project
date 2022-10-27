@@ -1,6 +1,7 @@
 .profile__main {
   margin:0;
   max-height: fit-content;
+  max-width: 580px;
   display: flex;
   flex-direction: row;
 }
@@ -9,5 +10,6 @@
   .profile__main {
     flex-direction: column;
     justify-content: center;
+    min-width: 282px;
   }
 }

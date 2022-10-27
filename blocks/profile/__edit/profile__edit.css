@@ -1,18 +1,19 @@
 .profile__edit {
   margin:0;
+  border:none;
+  background:none;
   background: url(../../../images/edit.svg);
-  background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-size: 42%;
+  padding:0;
   align-self: center;
-  border: 1px solid white;
   width: 24px;
   height: 24px;
   grid-area: edit;
 }
 
 .profile__edit:hover {
-    opacity: 50%;
+  background: url(../../../images/edit_hover.svg);
   }
 
 @media screen and (max-width: 768px) {
