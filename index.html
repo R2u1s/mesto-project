@@ -83,17 +83,19 @@
     </footer>
     
     <div class="popup popup_opened">
-    <form class="popup__container" name="edit">
+      <div class="popup__container">
+        <form class="popup__form" name="edit-profile">  
         <h2 class="popup__title">Редактировать профиль</h2>
-        <fieldset class="popup__form">
-          <input type="text" value="Жак-Ив Кусто" name="name" class="popup__input">
-          <input type="text" value="Исследователь океана" name="spec" class="popup__input">
-        </fieldset>
-        <fieldset class="popup__handlers">
-          <input type="submit" value="Сохранить" class="popup__button">
-        </fieldset>
+          <fieldset class="popup__handlers">
+            <input type="text" value="Жак-Ив Кусто" name="name" class="popup__input">
+            <input type="text" value="Исследователь океана" name="spec" class="popup__input">
+          </fieldset>
+          <fieldset class="popup__handlers">
+            <input type="submit" value="Сохранить" class="popup__button">
+          </fieldset>
+        </form>
         <button href="" class="popup__close-button"></button>
-    </form>
+      </div>
     </div>
    
 </body>
