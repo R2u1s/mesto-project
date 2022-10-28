@@ -1,5 +1,6 @@
 .popup__container {
-  max-width: 358px;
+  box-sizing: border-box;
+  min-width: 430px;
   margin: auto;
   padding-top: 34px;
   padding-left: 36px;
@@ -16,8 +17,7 @@
 
 @media screen and (max-width: 640px) {
   .popup__container {
-    width: calc(3*100vw/8 + 118px);
-    height: calc(285px - (13*100vw/320));
+    min-width: calc(37*100vw/80 + 134px);
     padding-top: calc(9*100vw/320 + 16px);
     padding-left: calc(7*100vw/160 + 8px);
     padding-right: calc(7*100vw/160 + 8px);
@@ -27,8 +27,9 @@
 
 @media screen and (max-width: 320px) {
   .popup__container {
-    width: 238px;
-    height: 272px;
+    min-width: 282px;
+    margin-left: 19px;
+    margin-right: 19px;
     padding-top: 25px;
     padding-left: 22px;
     padding-right: 22px;

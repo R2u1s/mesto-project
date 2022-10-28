@@ -10,10 +10,11 @@
   width: 24px;
   height: 24px;
   grid-area: edit;
+  cursor: pointer;
 }
 
 .profile__edit:hover {
-  background: url(../../../images/edit_hover.svg);
+  opacity: 60%;
   }
 
 @media screen and (max-width: 768px) {

@@ -3,6 +3,9 @@
   display: block;
   min-width: 150px;
   min-height: 50px;
+  border:none;
+  background:none;
+  cursor: pointer;
   border: 2px solid white;
   background-image: url(../../../images/Add.svg);
   background-repeat: no-repeat;

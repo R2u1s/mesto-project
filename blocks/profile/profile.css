@@ -9,6 +9,12 @@
   align-items: center;
 }
 
+@media screen and (max-width: 918px) {
+  .profile {
+    margin: 0 19px;
+  }
+}
+
 @media screen and (max-width: 768px) {
     .profile {
       max-width: fit-content;
