@@ -14,11 +14,13 @@
   @media screen and (max-width: 768px) {
     .profile__info {
       gap: calc(100vw/224 + (88px/7)) calc(100vw/56 + (30px/7));
+      max-width: calc(100% - 150px);
     }
   }
 
 @media screen and (max-width: 480px) {
   .profile__info {
+    max-width: 100%;
     margin-top: 26px;
     margin-left: 0;
     gap: 14px 10px;

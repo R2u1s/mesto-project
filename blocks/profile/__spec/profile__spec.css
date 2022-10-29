@@ -14,6 +14,7 @@
     .profile__spec {
       font-size: calc(100vw/112 + (78px/7));
       line-height: calc(121*100vw/11200 + (4719px/350));
+      max-width: 80%;
     }
 }
 

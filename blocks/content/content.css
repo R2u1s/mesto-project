@@ -7,7 +7,8 @@
 
 @media screen and (max-width: 918px) {
   .content {
-    max-width: calc(100vw - 38px);
+    /* max-width: calc(100vw - 38px); */
+    margin:0 19px;
   }
 }
 
@@ -20,6 +21,6 @@
 @media screen and (max-width: 320px) {
   .content {
     min-width: 282px;
-    margin:0 auto;
+    margin:0 19px;
   }
 }

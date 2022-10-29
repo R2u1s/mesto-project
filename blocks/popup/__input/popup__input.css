@@ -2,7 +2,7 @@
     display: block;
     margin:0 0 30px;
     border: 0;
-    max-width: 100%;
+    min-width: 100%;
     min-height: 27px;
     box-sizing: border-box;
     background-color: transparent;

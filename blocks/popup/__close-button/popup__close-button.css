@@ -1,5 +1,6 @@
 .popup__close-button {
     position: absolute;
+    padding: 0;
     right: -40px;
     top: -40px;
     width: 32px;
@@ -20,7 +21,7 @@
   .popup__close-button {
     width: calc(3*100vw/80 + 9px);
     height: calc(3*100vw/80 + 9px);
-    right: calc(80px - (3*100vw/16));
+    right: calc(40px - (100vw/8));
     top: calc(-32px - (100vw/80));
   }
 }
@@ -29,7 +30,7 @@
   .popup__close-button {
     width: 20px;
     height: 20px;
-    right: 20px;
+    right: 0px;
     top: -36x;
   }
 }

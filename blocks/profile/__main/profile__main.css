@@ -2,12 +2,20 @@
   margin:0;
   max-height: fit-content;
   max-width: 580px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
 }
 
+@media screen and (max-width: 768px) {
+  .profile__main {
+    max-width: 100%;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .profile__main {
+    max-width: 100%;
     flex-direction: column;
     justify-content: center;
     min-width: 282px;

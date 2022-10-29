@@ -1,7 +1,9 @@
 .profile {
-  margin: 40px 0 auto;
+  margin: 0 auto;
+  margin-top: 40px;
   max-width: 100%;
   min-width: 282px;
+  box-sizing: border-box;
   min-height: fit-content;
   display: flex;
   flex-direction: row;
@@ -9,17 +11,10 @@
   align-items: center;
 }
 
-@media screen and (max-width: 918px) {
-  .profile {
-    margin: 0 19px;
-  }
-}
 
 @media screen and (max-width: 768px) {
     .profile {
-      max-width: fit-content;
       flex-direction: column;
-      margin: 0 auto;
       margin-top: 42px;
     }
   }
