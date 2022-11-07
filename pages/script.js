@@ -50,7 +50,7 @@ function handleFormSubmit(evt) {
 };
 formElement.addEventListener('submit', handleFormSubmit); 
 
-//////////Функция добавления карточки//////////////
+//////////Функция добавления удаления карточки//////////////
 const cards = page.querySelector('.cards__cards-list');
 
 function addCard(cardTitle, cardImageLink) {
@@ -64,8 +64,14 @@ function addCard(cardTitle, cardImageLink) {
   console.log(evt);
   evt.target.classList.toggle('cards__like_active');
   });
+
+  const deleteButton = cardElement.querySelector('.cards__delete');
+  deleteButton.addEventListener('click', function (evt) {
+    const listItem = evt.target.closest('.cards__card');
+    listItem.remove();
+  });
+
   cards.append(cardElement); 
-  console.log(cardTitle,cardImageLink);
 }
 
 //////////Заполнение страницы карточками по умолчанию//////////////
@@ -91,7 +97,7 @@ buttonClosePopup.addEventListener('click', function () {
 const buttonCreate = popupAdd.querySelector('.popup__button');
 const formAddElement = popupAdd.querySelector('.popup__form');
 buttonCreate.addEventListener('click', function () {
-    function addFormSubmit(evt) {
+  function addFormSubmit(evt) {
     evt.preventDefault();
     const nameInput = formAddElement.querySelector('[name="Name"]');
     const linkInput = formAddElement.querySelector('[name="Link"]');
@@ -102,5 +108,4 @@ buttonCreate.addEventListener('click', function () {
   formAddElement.addEventListener('submit', addFormSubmit); 
 });
 
-////////////
 
