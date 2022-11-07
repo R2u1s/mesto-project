@@ -11,6 +11,7 @@
     background-color: #000;
     font-family: inherit;
     border-radius: 2px;
+    padding:0;
 }
 
 .popup__button:hover {
