@@ -1,8 +1,3 @@
-const page = document.querySelector('.page');
-const popup = page.querySelector('#edit-profile');
-const editButton = page.querySelector('.profile__edit');
-const closeButton = popup.querySelector('.popup__close-button');
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -29,6 +24,11 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+const page = document.querySelector('.page');
+const popup = page.querySelector('#edit-profile');
+const editButton = page.querySelector('.profile__edit');
+const closeButton = popup.querySelector('.popup__close-button');
 
 editButton.addEventListener('click', function () {
     popup.classList.add('popup_opened');
@@ -60,22 +60,44 @@ function addCard(cardTitle, cardImageLink) {
   cardElement.querySelector('.cards__title').textContent = cardTitle;
   cardElement.querySelector('.cards__image').src = cardImageLink;
   
+  //Лайк
   cardElement.querySelector('.cards__like').addEventListener('click', function (evt) {
   console.log(evt);
   evt.target.classList.toggle('cards__like_active');
   });
-
+  
+  //Кнопка удаления карточки
   const deleteButton = cardElement.querySelector('.cards__delete');
   deleteButton.addEventListener('click', function (evt) {
     const listItem = evt.target.closest('.cards__card');
     listItem.remove();
   });
+  
+  //Кнопка просмотра изображения
+  const cardImage = cardElement.querySelector('.cards__image')
+  cardImage.addEventListener('click', function (evt) {
+    //Открытие попапа
+    const popupImage = page.querySelector('#image');
+    popupImage.classList.toggle('popup_opened');
+    const buttonCloseImage = popupImage.querySelector('.popup__close-button');
+    
+    //Отображение картинки
+    const imageCard = evt.target.closest('.cards__card');
+    const imageTitle = imageCard.querySelector('.cards__title');
+    popupImage.querySelector('.popup__image').src = evt.target.src;
+    popupImage.querySelector('.popup__figcaption').textContent = imageTitle.textContent;
 
-  cards.append(cardElement); 
+    buttonCloseImage.addEventListener('click', function () {
+      popupImage.classList.remove('popup_opened');
+    });
+  });
+
+  cards.prepend(cardElement); 
 }
 
 //////////Заполнение страницы карточками по умолчанию//////////////
-initialCards.forEach(function (item) {
+
+initialCards.reverse().forEach(function (item) {
   addCard(item.name,item.link);
 });
 
@@ -107,5 +129,4 @@ buttonCreate.addEventListener('click', function () {
   }; 
   formAddElement.addEventListener('submit', addFormSubmit); 
 });
-
 
