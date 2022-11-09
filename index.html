@@ -28,25 +28,25 @@
       </section>
 
       <section class="cards">
-        <ul class="cards__cards-list">
-          <template id="card">
+      <ul class="cards__cards-list">
+        <template id="card">
           <li class="cards__card">
-            <img class="cards__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Старая постройка в горах">
+            <img class="cards__image" src="" alt="">
             <div class="cards__name">
               <h3 class="cards__title">Карачаево-Черкесия</h3>
-              <button type="button" class="cards__like cards__like_active"></button>
+              <button type="button" class="cards__like"></button>
             </div>
+            <button type="button" class="cards__delete"></button>
           </li>
-          </template>
-        </ul>
-      </section>
+        </template>
+        </section>
     </main>
 
     <footer class="footer">
       <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
     
-    <div class="popup">
+    <div id="edit-profile" class="popup">
       <div class="popup__container">
         <form class="popup__form" name="edit-profile">  
         <h2 class="popup__title">Редактировать профиль</h2>
@@ -61,6 +61,32 @@
         <button type="button" class="popup__close-button"></button>
       </div>
     </div>
-    <script src="./pages/script.js"></script>
+
+    <div id="add-card" class="popup">
+      <div class="popup__container">
+        <form class="popup__form" name="edit-profile">  
+        <h2 class="popup__title">Новое место</h2>
+          <fieldset class="popup__handlers">
+            <input type="text" placeholder="Название" name="Name" class="popup__input">
+            <input type="text" placeholder="Ссылка на картинку" name="Link" class="popup__input">
+          </fieldset>
+          <fieldset class="popup__handlers">
+            <button type="submit" class="popup__button">Создать</button>
+          </fieldset>
+        </form>
+        <button type="button" class="popup__close-button"></button>
+      </div>
+    </div>
+
+    <div id="image" class="popup popup_dark">
+      <figure class="popup__figure">
+        <img class="popup__image" src="" alt="">
+        <figcaption class="popup__figcaption"></figcaption>
+        <button type="button" class="popup__close-button"></button>
+      </figure>
+    </div>
+  
+  <script src="./blocks/popup/popup.js"></script>   
+  <script src="./blocks/cards/cards.js"></script>   
 </body>
 </html>
