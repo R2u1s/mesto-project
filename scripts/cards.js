@@ -1,39 +1,49 @@
 const initialCards = [
     {
       name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+      link: 'https://pictues.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+      alt: 'Архыз. В горах немного снега'
     },
     {
       name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+      alt: 'Челябинская область. Озеро, вокруг лес, немного снега, вечернее солнце'
     },
     {
       name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+      alt: 'Иваново. Мрачные панельные дома'
     },
     {
       name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+      alt: 'Камчатка. Впереди сопка, немного снега'
     },
     {
       name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+      alt: 'Холмогорский район, железная дорога уходящая в горизонт, вокруг лес'
     },
     {
       name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+      alt: 'Зимний Байкал'
     }
   ];
 
 //////////Функция добавления удаления карточки//////////////
 const cards = document.querySelector('.cards__cards-list');
 
-function addCard(cardTitle, cardImageLink) {
+function addCard(cardTitle, cardImageLink, cardImageAlt) {
   const cardTemplate = document.querySelector('#card').content;
   const cardElement = cardTemplate.querySelector('.cards__card').cloneNode(true);
+  if (cardImageAlt===undefined) {
+    cardImageAlt = cardTitle;
+  }
 
   cardElement.querySelector('.cards__title').textContent = cardTitle;
   cardElement.querySelector('.cards__image').src = cardImageLink;
+  cardElement.querySelector('.cards__image').alt = cardImageAlt;
   
   //Лайк
   cardElement.querySelector('.cards__like').addEventListener('click', function (evt) {
@@ -73,7 +83,7 @@ function addCard(cardTitle, cardImageLink) {
 //////////Заполнение страницы карточками по умолчанию//////////////
 
 initialCards.reverse().forEach(function (item) {
-    addCard(item.name,item.link);
+    addCard(item.name,item.link,item.alt);
   });
 
 //////////Окно добавление карточки//////////////////
