@@ -12,6 +12,11 @@ const jobProfile = page.querySelector('.profile__spec');
 const saveButton = editPopup.querySelector('.popup__button');
 //////////////////////////////////////////////////////////////////////
 
+function addFormSubmit(evt) {
+  evt.preventDefault();  
+  evt.target.reset()
+};
+
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
 }
@@ -26,28 +31,26 @@ editPopupButton.addEventListener('click', function () {
   jobInput.value = jobProfile.textContent;
 });
 
-function addFormSubmit(evt) {
-  evt.preventDefault();  
-};
-
 saveButton.addEventListener('click', function () {
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
   editPopup.addEventListener('submit', addFormSubmit);
+  nameInput.value = '';
+  jobInput.value = '';
   closePopup(editPopup);
 });
 
-closeEditPopupButton.addEventListener('click', function () {
-  closePopup(editPopup);
+const closeButtons = document.querySelectorAll('.popup__close-button');
+
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
 });
 
 newItemPopupButton.addEventListener('click', function () {
   openPopup(newItemPopup);
 });
 
-closeNewPopupButton.addEventListener('click', function () {
-  closePopup(newItemPopup);
-});
 
 
 
