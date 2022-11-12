@@ -5,6 +5,11 @@ const closeEditPopupButton = editPopup.querySelector('.popup__close-button');
 const newItemPopup = page.querySelector('#add-card');
 const newItemPopupButton = page.querySelector('.profile__add');
 const closeNewPopupButton = newItemPopup.querySelector('.popup__close-button');
+const nameInput = editPopup.querySelector('[name="name"]');
+const jobInput = editPopup.querySelector('[name="spec"]');
+const nameProfile = page.querySelector('.profile__name');
+const jobProfile = page.querySelector('.profile__spec');
+const saveButton = editPopup.querySelector('.popup__button');
 //////////////////////////////////////////////////////////////////////
 
 function openPopup(popupElement) {
@@ -17,6 +22,19 @@ function closePopup(popupElement) {
 
 editPopupButton.addEventListener('click', function () {
   openPopup(editPopup);
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = jobProfile.textContent;
+});
+
+function addFormSubmit(evt) {
+  evt.preventDefault();  
+};
+
+saveButton.addEventListener('click', function () {
+  nameProfile.textContent = nameInput.value;
+  jobProfile.textContent = jobInput.value;
+  editPopup.addEventListener('submit', addFormSubmit);
+  closePopup(editPopup);
 });
 
 closeEditPopupButton.addEventListener('click', function () {
@@ -31,17 +49,9 @@ closeNewPopupButton.addEventListener('click', function () {
   closePopup(newItemPopup);
 });
 
-const formElement = popup.querySelector('.popup__form');
-function handleFormSubmit(evt) {
-  evt.preventDefault();  
-  const nameInput = formElement.querySelector('[name="name"]');
-  const jobInput = formElement.querySelector('[name="spec"]');
-  
-  page.querySelector('.profile__name').textContent = nameInput.value;
-  page.querySelector('.profile__spec').textContent = jobInput.value;
-  popup.classList.remove('popup_opened');
-};
-formElement.addEventListener('submit', handleFormSubmit); 
+
+
+
 
 
 
