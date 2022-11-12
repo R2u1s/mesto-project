@@ -1,7 +1,7 @@
 const initialCards = [
     {
       name: 'Архыз',
-      link: 'https://pictues.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
       alt: 'Архыз. В горах немного снега'
     },
     {
@@ -85,20 +85,6 @@ function addCard(cardTitle, cardImageLink, cardImageAlt) {
 initialCards.reverse().forEach(function (item) {
     addCard(item.name,item.link,item.alt);
   });
-
-//////////Окно добавление карточки//////////////////
-const popupAdd = page.querySelector('#add-card');
-const buttonAddPopup = page.querySelector('.profile__add');
-
-//Работа кнопок открытия/закрытия
-buttonAddPopup.addEventListener('click', function () {
-  popupAdd.classList.toggle('popup_opened');
-});
-
-const buttonClosePopup = popupAdd.querySelector('.popup__close-button');
-buttonClosePopup.addEventListener('click', function () {
-  popupAdd.classList.remove('popup_opened');
-});
 
 //Добавление карточки по кнопке "Создать"//
 const buttonCreate = popupAdd.querySelector('.popup__button');
