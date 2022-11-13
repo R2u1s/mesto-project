@@ -1,5 +1,6 @@
 const page = document.querySelector('.page');
 const editPopup = page.querySelector('#edit-profile');
+const editForm = editPopup.querySelector('.popup__form');
 const editPopupButton = page.querySelector('.profile__edit');
 const closeEditPopupButton = editPopup.querySelector('.popup__close-button');
 const newItemPopup = page.querySelector('#add-card');
@@ -11,11 +12,6 @@ const nameProfile = page.querySelector('.profile__name');
 const jobProfile = page.querySelector('.profile__spec');
 const saveButton = editPopup.querySelector('.popup__button');
 //////////////////////////////////////////////////////////////////////
-
-function addFormSubmit(evt) {
-  evt.preventDefault();  
-  evt.target.reset()
-};
 
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
@@ -31,14 +27,17 @@ editPopupButton.addEventListener('click', function () {
   jobInput.value = jobProfile.textContent;
 });
 
-saveButton.addEventListener('click', function () {
+function editSubmit (evt) {
+  evt.preventDefault(); 
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
-  editPopup.addEventListener('submit', addFormSubmit);
   nameInput.value = '';
   jobInput.value = '';
-  closePopup(editPopup);
-});
+  closePopup(editPopup); 
+  evt.target.reset();
+}
+
+editForm.addEventListener('submit', editSubmit);
 
 const closeButtons = document.querySelectorAll('.popup__close-button');
 

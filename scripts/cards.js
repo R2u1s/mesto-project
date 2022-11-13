@@ -35,6 +35,7 @@ const initialCards = [
 const cards = document.querySelector('.cards__cards-list');
 const cardTemplate = document.querySelector('#card').content;
 const popupImage = page.querySelector('#image');
+const cardForm = newItemPopup.querySelector('.popup__form');
 const popupImageImg = popupImage.querySelector('.popup__image');
 const popupImageFigcaption = popupImage.querySelector('.popup__figcaption');
 
@@ -93,10 +94,14 @@ initialCards.reverse().forEach(function (item) {
 const nameImageInput = newItemPopup.querySelector('[name="Name"]');
 const linkInput = newItemPopup.querySelector('[name="Link"]');
 const buttonCreate = newItemPopup.querySelector('.popup__button');
-buttonCreate.addEventListener('click', function () {
+
+function cardSubmit (evt) {
+  evt.preventDefault(); 
   addCard(nameImageInput.value,linkInput.value);
-  newItemPopup.addEventListener('submit', addFormSubmit);
   nameImageInput.value = '';
   linkInput.value = '';
   closePopup(newItemPopup);
-});  
+  evt.target.reset();
+}
+
+cardForm.addEventListener('submit', cardSubmit);
