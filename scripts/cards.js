@@ -39,7 +39,6 @@ const cardForm = newItemPopup.querySelector('.popup__form');
 const popupImageImg = popupImage.querySelector('.popup__image');
 const popupImageFigcaption = popupImage.querySelector('.popup__figcaption');
 
-
 function createCard(cardTitle, cardImageLink, cardImageAlt) {
   const cardElement = cardTemplate.querySelector('.cards__card').cloneNode(true);
   if (cardImageAlt===undefined) {
@@ -66,15 +65,13 @@ function createCard(cardTitle, cardImageLink, cardImageAlt) {
   //Кнопка просмотра изображения
   const cardImage = cardElement.querySelector('.cards__image')
   cardImage.addEventListener('click', function (evt) {
-    //Открытие попапа
     openPopup(popupImage);
-    
     //Отображение картинки
     const imageCard = evt.target.closest('.cards__card');
     const imageTitle = imageCard.querySelector('.cards__title');
     popupImageImg.src = evt.target.src;
     popupImageFigcaption.textContent = imageTitle.textContent;
-
+    popupImageImg.alt = evt.target.alt;
   });
 
   return cardElement;
