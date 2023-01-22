@@ -1,6 +1,6 @@
 .popup__input {
-    display: block;
-    margin:0 0 30px;
+    margin: 0;
+    margin-bottom: 5px;
     border: 0;
     min-width: 100%;
     min-height: 27px;
@@ -10,8 +10,5 @@
     line-height: 16.94px;
     font-family: inherit;
     border-bottom: 1px solid #bcbcc4;
+    outline: none;
 }
-
-.popup__input:last-of-type {
-    margin:0;
-  }

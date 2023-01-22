@@ -1,0 +1,8 @@
+.popup__field {
+    margin:0 0 13px;
+    height: min-content;
+}
+
+.popup__field:last-of-type {
+    margin:0;
+  }

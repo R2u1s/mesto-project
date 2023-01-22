@@ -1,5 +1,5 @@
-.popup__button {
-    margin: 48px 0 0;
+.popup__submit {
+    margin: 32px 0 0;
     width: 100%;
     min-height: 50px;
     font-size: 18px;
@@ -14,12 +14,12 @@
     padding:0;
 }
 
-.popup__button:hover {
+.popup__submit:hover {
     opacity: .8;
-  }
+}
 
   @media screen and (max-width: 640px) {
-    .popup__button {
+    .popup__submit {
       font-size: calc(100vw/80 + 10px);
       min-height: calc(100vw/80 + 42px);
       margin-top: calc(3*100vw/320 + 42px);
@@ -27,7 +27,7 @@
   }
   
   @media screen and (max-width: 320px) {
-    .popup__button {
+    .popup__submit {
       font-size: 14px;
       min-height:46px;
       margin-top: 45px;
