@@ -1,17 +1,18 @@
-import {enableValidation} from './validate.js';
+import {initializeValidation} from './validate.js';
 import {nameProfile,jobProfile,nameInput,jobInput,editPopup,inputParams} from '../index.js';
 
 export function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
-  enableValidation(inputParams)(popupElement);
+  initializeValidation(popupElement);
+  document.addEventListener('keydown',closePopupByEscape);
 }
 
 export function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
-  resetPopup(popupElement);
+  document.removeEventListener('keydown',closePopupByEscape);
 }
 
-function resetPopup(popupElement) {
+export function resetPopup(popupElement) {
   if(popupElement.querySelector('.popup__form')){
     popupElement.querySelector('.popup__form').reset();
   }
@@ -37,16 +38,14 @@ export const closePopupByButtons = () => {
   });
 }
 
-export const closePopupByEscape = () => {
-  addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      const popupOpened = document.querySelector('.popup_opened');
-      if (popupOpened !== null) {
-        const popup = popupOpened.closest('.popup')
-        closePopup(popup);
-      }
+export const closePopupByEscape = (evt) => {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    if (popupOpened !== null) {
+      const popup = popupOpened.closest('.popup')
+      closePopup(popup);
     }
-  });
+  }
 }
 
 export const closePopupByOverlayClick = (popups) => {

@@ -1,6 +1,6 @@
 import '../pages/index.css';
-import {openPopup,editSubmit,closePopupByButtons,closePopupByOverlayClick,closePopupByEscape} from './components/modal.js';
-import {cardSubmit,fillInitialCards} from './components/card.js';
+import {openPopup,editSubmit,closePopupByButtons,closePopupByOverlayClick,closePopupByEscape,resetPopup} from './components/modal.js';
+import {cardSubmit,fillInitialCards,newItemPopup} from './components/card.js';
 import {enableValidation} from './components/validate.js';
 
 export const page = document.querySelector('.page');
@@ -12,7 +12,6 @@ export const jobInput = editPopup.querySelector('[name="spec"]');
 export const nameProfile = page.querySelector('.profile__name');
 export const jobProfile = page.querySelector('.profile__spec');
 export const newItemPopupButton = page.querySelector('.profile__add');
-export const newItemPopup = page.querySelector('#add-card');
 export const editForm = editPopup.querySelector('.popup__form');
 
 const cardForm = newItemPopup.querySelector('.popup__form');
@@ -26,6 +25,7 @@ editPopupButton.addEventListener('click', function () {
 
 /* Кнопка создания новой карточки */
 newItemPopupButton.addEventListener('click', function () {
+    resetPopup(newItemPopup);
     openPopup(newItemPopup);
 });
 
@@ -36,7 +36,6 @@ cardForm.addEventListener('submit', cardSubmit);
 /* Закрытие попапов разными событиями */
 closePopupByButtons();
 closePopupByOverlayClick(popups);
-closePopupByEscape();
 
 /* Заполнение страницы карточками по умолчанию */
 fillInitialCards();

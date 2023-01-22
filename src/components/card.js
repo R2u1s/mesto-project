@@ -1,4 +1,3 @@
-import { newItemPopup } from '../index.js';
 import { openPopup,closePopup } from './modal.js';
 
 const pic1 = new URL('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg');
@@ -49,6 +48,10 @@ const cardTemplate = document.querySelector('#card').content;
 const popupImage = page.querySelector('#image');
 const popupImageImg = popupImage.querySelector('.popup__image');
 const popupImageFigcaption = popupImage.querySelector('.popup__figcaption');
+export const newItemPopup = page.querySelector('#add-card');
+const nameImageInput = newItemPopup.querySelector('[name="Name"]');
+const linkInput = newItemPopup.querySelector('[name="link"]');
+
 
 function createCard(cardTitle, cardImageLink, cardImageAlt) {
   const cardElement = cardTemplate.querySelector('.cards__card').cloneNode(true);
@@ -99,13 +102,10 @@ const deleteCard = (cardElement) => {
 }
 
 export function cardSubmit (evt) {
-  const nameImageInput = newItemPopup.querySelector('[name="Name"]');
-  const linkInput = newItemPopup.querySelector('[name="link"]');
-
   evt.preventDefault(); 
   addCard(nameImageInput.value,linkInput.value);
-  nameImageInput.value = '';
-  linkInput.value = '';
+/*   nameImageInput.value = '';
+  linkInput.value = ''; */
   closePopup(newItemPopup);
   evt.target.reset();
 }
