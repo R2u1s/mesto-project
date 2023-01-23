@@ -1,7 +1,7 @@
 import '../pages/index.css';
-import {openPopup,editSubmit,closePopupByButtons,closePopupByOverlayClick,closePopupByEscape,resetPopup} from './components/modal.js';
+import {openPopup,editSubmit,closePopupByButtons,closePopupByOverlayClick,resetPopup} from './components/modal.js';
 import {cardSubmit,fillInitialCards,newItemPopup} from './components/card.js';
-import {enableValidation} from './components/validate.js';
+import {enableValidation,initializeValidation} from './components/validate.js';
 
 export const page = document.querySelector('.page');
 const popups = document.querySelectorAll('.popup');
@@ -21,12 +21,14 @@ editPopupButton.addEventListener('click', function () {
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
     openPopup(editPopup);
+    initializeValidation(editPopup);
   });
 
 /* Кнопка создания новой карточки */
 newItemPopupButton.addEventListener('click', function () {
     resetPopup(newItemPopup);
     openPopup(newItemPopup);
+    initializeValidation(newItemPopup);
 });
 
 editForm.addEventListener('submit', editSubmit);

@@ -1,9 +1,7 @@
-import {initializeValidation} from './validate.js';
 import {nameProfile,jobProfile,nameInput,jobInput,editPopup,inputParams} from '../index.js';
 
 export function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
-  initializeValidation(popupElement);
   document.addEventListener('keydown',closePopupByEscape);
 }
 
@@ -22,8 +20,6 @@ export function editSubmit (evt) {
   evt.preventDefault(); 
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
-  nameInput.value = '';
-  jobInput.value = '';
   closePopup(editPopup); 
   evt.target.reset();
 }
@@ -42,8 +38,7 @@ export const closePopupByEscape = (evt) => {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
     if (popupOpened !== null) {
-      const popup = popupOpened.closest('.popup')
-      closePopup(popup);
+      closePopup(popupOpened);
     }
   }
 }
