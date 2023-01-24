@@ -130,6 +130,27 @@
         <button type="button" class="popup__close-button"></button>
       </figure>
     </div>
+
+    <div id="edit-avatar" class="popup">
+      <div class="popup__container">
+        <form class="popup__form" name="edit-avatar" novalidate>  
+        <h2 class="popup__title">Обновить аватар</h2>
+          <fieldset class="popup__set">
+            <div class="popup__field">
+              <input 
+                type="url" 
+                name="link" 
+                class="popup__input" 
+                id="link"
+                required>
+                <span class="popup__input-error link-error"></span>
+            </div>
+            <button type="submit" class="popup__submit">Сохранить</button>
+          </fieldset>
+        </form>
+        <button type="button" class="popup__close-button"></button>
+      </div>
+    </div>
   
 </body>
 </html>

@@ -1,5 +1,5 @@
 import '../pages/index.css';
-import {openPopup,editSubmit,closePopupByButtons,closePopupByOverlayClick,resetPopup} from './components/modal.js';
+import {openPopup,closePopup,editSubmit,closePopupByButtons,closePopupByOverlayClick,resetPopup} from './components/modal.js';
 import {cardSubmit,fillInitialCards,newItemPopup} from './components/card.js';
 import {enableValidation,initializeValidation} from './components/validate.js';
 
@@ -13,8 +13,12 @@ export const nameProfile = page.querySelector('.profile__name');
 export const jobProfile = page.querySelector('.profile__spec');
 export const newItemPopupButton = page.querySelector('.profile__add');
 export const editForm = editPopup.querySelector('.popup__form');
-
 const cardForm = newItemPopup.querySelector('.popup__form');
+const editProfileAvatar = page.querySelector('.profile__avatar');
+const editAvatarPopup = page.querySelector('#edit-avatar');
+const linkAvatar = editAvatarPopup.querySelector('[name="link"]');
+const linkAvatarExist = page.querySelector('.profile__pic');
+const avatarForm = editAvatarPopup.querySelector('.popup__form');
 
 /* Кнопка редактирования профиля */
 editPopupButton.addEventListener('click', function () {
@@ -22,7 +26,7 @@ editPopupButton.addEventListener('click', function () {
     jobInput.value = jobProfile.textContent;
     openPopup(editPopup);
     initializeValidation(editPopup);
-  });
+});
 
 /* Кнопка создания новой карточки */
 newItemPopupButton.addEventListener('click', function () {
@@ -31,9 +35,26 @@ newItemPopupButton.addEventListener('click', function () {
     initializeValidation(newItemPopup);
 });
 
+/* Кнопка обновления аватара */
+editProfileAvatar.addEventListener('click', function () {
+  linkAvatar.value = linkAvatarExist.src;
+  openPopup(editAvatarPopup);
+  initializeValidation(editAvatarPopup);
+});
+
+function avatarSubmit (evt) {
+  evt.preventDefault(); 
+  linkAvatarExist.src = linkAvatar.value;
+  linkAvatarExist.alt = 'Аватар';
+  closePopup(editAvatarPopup); 
+  evt.target.reset();
+}
+
 editForm.addEventListener('submit', editSubmit);
 /* Добавление карточки */
 cardForm.addEventListener('submit', cardSubmit);
+/* Обновление аватара */
+avatarForm.addEventListener('submit', avatarSubmit);
 
 /* Закрытие попапов разными событиями */
 closePopupByButtons();
