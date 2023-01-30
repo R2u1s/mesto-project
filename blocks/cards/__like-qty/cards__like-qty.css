@@ -1,0 +1,10 @@
+.cards__like-qty {
+  display:none;
+  margin:0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;  
+  color: #000;
+  text-align: center;
+}

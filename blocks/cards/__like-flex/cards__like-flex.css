@@ -1,0 +1,6 @@
+.cards__like-flex {
+  margin: 0;
+  display:flex;
+  flex-flow: column;
+  gap: 3px;
+}

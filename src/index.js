@@ -1,7 +1,8 @@
 import '../pages/index.css';
-import {openPopup,closePopup,editSubmit,closePopupByButtons,closePopupByOverlayClick,resetPopup} from './components/modal.js';
-import {cardSubmit,fillInitialCards,newItemPopup} from './components/card.js';
+import {openPopup,editSubmit,closePopupByButtons,closePopupByOverlayClick,resetPopup,avatarSubmit} from './components/modal.js';
+import {cardSubmit,newItemPopup,fillInitialCards} from './components/card.js';
 import {enableValidation,initializeValidation} from './components/validate.js';
+import {fillProfileInfo} from './components/api.js';
 
 export const page = document.querySelector('.page');
 const popups = document.querySelectorAll('.popup');
@@ -14,12 +15,12 @@ export const jobProfile = page.querySelector('.profile__spec');
 export const newItemPopupButton = page.querySelector('.profile__add');
 export const editForm = editPopup.querySelector('.popup__form');
 const cardForm = newItemPopup.querySelector('.popup__form');
-const editProfileAvatar = page.querySelector('.profile__avatar');
-const editAvatarPopup = page.querySelector('#edit-avatar');
-const linkAvatar = editAvatarPopup.querySelector('[name="link"]');
-const linkAvatarExist = page.querySelector('.profile__pic');
+export const editProfileAvatar = page.querySelector('.profile__avatar');
+export const editAvatarPopup = page.querySelector('#edit-avatar');
+export const linkAvatar = editAvatarPopup.querySelector('[name="link"]');
+export const linkAvatarExist = page.querySelector('.profile__pic');
 const avatarForm = editAvatarPopup.querySelector('.popup__form');
-
+///////////////////////////////////////////////////////////////////
 /* Кнопка редактирования профиля */
 editPopupButton.addEventListener('click', function () {
     nameInput.value = nameProfile.textContent;
@@ -27,14 +28,12 @@ editPopupButton.addEventListener('click', function () {
     openPopup(editPopup);
     initializeValidation(editPopup);
 });
-
 /* Кнопка создания новой карточки */
 newItemPopupButton.addEventListener('click', function () {
     resetPopup(newItemPopup);
     openPopup(newItemPopup);
     initializeValidation(newItemPopup);
 });
-
 /* Кнопка обновления аватара */
 editProfileAvatar.addEventListener('click', function () {
   linkAvatar.value = linkAvatarExist.src;
@@ -42,29 +41,22 @@ editProfileAvatar.addEventListener('click', function () {
   initializeValidation(editAvatarPopup);
 });
 
-function avatarSubmit (evt) {
-  evt.preventDefault(); 
-  linkAvatarExist.src = linkAvatar.value;
-  linkAvatarExist.alt = 'Аватар';
-  closePopup(editAvatarPopup); 
-  evt.target.reset();
-}
-
+/* Изменение информации пользователя */
 editForm.addEventListener('submit', editSubmit);
 /* Добавление карточки */
 cardForm.addEventListener('submit', cardSubmit);
-/* Обновление аватара */
+/* Имзменение аватара */
 avatarForm.addEventListener('submit', avatarSubmit);
 
 /* Закрытие попапов разными событиями */
 closePopupByButtons();
 closePopupByOverlayClick(popups);
-
-/* Заполнение страницы карточками по умолчанию */
+/* Заполнение информации пользователя */
+fillProfileInfo();
+/* Заполнение страницы карточками при старте страницы */
 fillInitialCards();
 
 /* Валидация форм */
-
 export const inputParams = {
   allPopups: '.popup',
   formSelector: '.popup__form',

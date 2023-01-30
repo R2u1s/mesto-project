@@ -17,11 +17,11 @@
       <section class="profile">
         <div class="profile__main">
           <div class="profile__avatar">
-            <img src="<%=require('../images/Jacques.jpg')%>" class='profile__pic' alt="Жак-Ив Кусто в красной шапке">      
+            <img src="<%=require('../images/Jacques.jpg')%>" class='profile__pic' alt="Аватар">      
           </div>
           <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <p class="profile__spec">Исследователь океана</p>
+            <h1 class="profile__name"></h1>
+            <p class="profile__spec"></p>
             <button type="button" class="profile__edit"></button>
           </div>
         </div>
@@ -32,10 +32,14 @@
       <ul class="cards__cards-list">
         <template id="card">
           <li class="cards__card">
+            <div id="cardId" style="display:none">hhkj</div>
             <img class="cards__image" src="" alt="">
             <div class="cards__name">
               <h3 class="cards__title">Карачаево-Черкесия</h3>
-              <button type="button" class="cards__like"></button>
+              <div class="cards__like-flex">
+                <button type="button" class="cards__like"></button>
+                <p class="cards__like-qty">0</p>
+              </div>
             </div>
             <button type="button" class="cards__delete"></button>
           </li>

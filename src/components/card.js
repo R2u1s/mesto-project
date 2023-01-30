@@ -1,4 +1,5 @@
-import { openPopup,closePopup } from './modal.js';
+import { openPopup,closePopup,renderLoading } from './modal.js';
+import { id,postCard,deleteCardApi,addLikeCard,removeLikeCard, getInitialCards } from './api.js';
 
 const pic1 = new URL('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg');
 const pic2 = new URL('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg');
@@ -6,40 +7,6 @@ const pic3 = new URL('https://pictures.s3.yandex.net/frontend-developer/cards-co
 const pic4 = new URL('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg');
 const pic5 = new URL('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg');
 const pic6 = new URL('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg');
-//, import.meta.url - добавить в конец файла
-
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: pic1,
-      alt: 'Архыз. В горах немного снега'
-    },
-    {
-      name: 'Челябинская область',
-      link: pic2,
-      alt: 'Челябинская область. Озеро, вокруг лес, немного снега, вечернее солнце'
-    },
-    {
-      name: 'Иваново',
-      link: pic3,
-      alt: 'Иваново. Мрачные панельные дома'
-    },
-    {
-      name: 'Камчатка',
-      link: pic4,
-      alt: 'Камчатка. Впереди сопка, немного снега'
-    },
-    {
-      name: 'Холмогорский район',
-      link: pic5,
-      alt: 'Холмогорский район, железная дорога уходящая в горизонт, вокруг лес'
-    },
-    {
-      name: 'Байкал',
-      link: pic6,
-      alt: 'Зимний Байкал'
-    }
-  ];
 
 //////////Функция добавления удаления карточки//////////////
 const page = document.querySelector('.page');
@@ -52,8 +19,7 @@ export const newItemPopup = page.querySelector('#add-card');
 const nameImageInput = newItemPopup.querySelector('[name="Name"]');
 const linkInput = newItemPopup.querySelector('[name="link"]');
 
-
-function createCard(cardTitle, cardImageLink, cardImageAlt) {
+function createCard(cardTitle, cardImageLink, cardImageAlt, ownerId, likes, cardId) {
   const cardElement = cardTemplate.querySelector('.cards__card').cloneNode(true);
   if (cardImageAlt===undefined) {
     cardImageAlt = cardTitle;
@@ -61,18 +27,48 @@ function createCard(cardTitle, cardImageLink, cardImageAlt) {
   cardElement.querySelector('.cards__title').textContent = cardTitle;
   cardElement.querySelector('.cards__image').src = cardImageLink;
   cardElement.querySelector('.cards__image').alt = cardImageAlt;
-  
+  cardElement.querySelector('#cardId').textContent = cardId;
+
   //Лайк
+  const cardLikesQty = cardElement.querySelector('.cards__like-qty');
+  cardLikesQty.textContent = likes.length.toString();
+  if (
+    likes.some(function(item) {
+      return item._id === id;
+  })
+  ) cardElement.querySelector('.cards__like').classList.toggle('cards__like_active');
+
+  //Кнопка
   cardElement.querySelector('.cards__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('cards__like_active');
+    if (!evt.target.classList.value.includes('cards__like_active')) {
+      removeLikeCard(cardElement,cardId);
+    } else {
+      addLikeCard(cardElement,cardId);
+    }
   });
-  
+
+  toggleQtyVisibility(cardElement);
   //Кнопка удаления карточки
   deleteCard(cardElement);
+  if (ownerId === id) {
+    cardElement.querySelector('.cards__delete').classList.add('cards__delete_active');
+  }
   //Кнопка просмотра изображения
   openImage(cardElement);
 
   return cardElement;
+}
+
+export function toggleQtyVisibility(cardElement) {
+  const cardLikesQty = cardElement.querySelector('.cards__like-qty');
+  if (cardLikesQty.textContent === '0') {
+    cardLikesQty.classList.remove('cards__like-qty_active');
+  } else {
+    if (!cardLikesQty.classList.value.includes('cards__like-qty_active')){
+      cardLikesQty.classList.toggle('cards__like-qty_active');
+    }
+  }
 }
 
 //Кнопка просмотра изображения
@@ -88,8 +84,8 @@ const openImage = (cardElement) => {
   });
 }
 
-function addCard(cardTitle, cardImageLink, cardImageAlt) {
-  cards.prepend(createCard(cardTitle, cardImageLink, cardImageAlt)); 
+function addCard(cardTitle, cardImageLink, cardImageAlt, ownerId, likes, cardId) {
+  cards.prepend(createCard(cardTitle, cardImageLink, cardImageAlt, ownerId, likes,cardId)); 
 }
 
 /* Работа кнопки удаления карточки */
@@ -98,20 +94,34 @@ const deleteCard = (cardElement) => {
   deleteButton.addEventListener('click', function (evt) {
     const listItem = evt.target.closest('.cards__card');
     listItem.remove();
+    deleteCardApi(cardElement.querySelector('#cardId').textContent);
   });
 }
 
 export function cardSubmit (evt) {
   evt.preventDefault(); 
-  addCard(nameImageInput.value,linkInput.value);
-/*   nameImageInput.value = '';
-  linkInput.value = ''; */
-  closePopup(newItemPopup);
-  evt.target.reset();
+  const nameImageInputValue = nameImageInput.value;
+  const linkInputValue = linkInput.value;
+
+  const getNewCardId = () => {
+    renderLoading(evt.target,true);
+    postCard(nameImageInputValue,linkInputValue).then((data) => {
+      addCard(nameImageInputValue,linkInputValue,'',id,[],data._id);
+      closePopup(newItemPopup);
+      renderLoading(evt.target,false);
+      evt.target.reset();
+    })
+  }
+  getNewCardId();
 }
 
-export const fillInitialCards = () => {
-  initialCards.reverse().forEach(function (item) {
-    addCard(item.name,item.link,item.alt);
-  });
+export function fillInitialCards () {
+  const initialCards = () => {
+    getInitialCards().then((data) => {
+      data.reverse().forEach(function (item) {
+        addCard(item.name,item.link,item.alt,item.owner._id,item.likes,item._id);
+      });
+    });
+  }
+  initialCards();
 }

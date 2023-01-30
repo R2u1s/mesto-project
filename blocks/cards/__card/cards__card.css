@@ -1,6 +1,8 @@
 .cards__card {
+    display:flex;
+    flex-flow: column;
     width: 100%;
-    max-height: fit-content;
+    height: 361px;
     padding: 0;
     background-color: white;
     border-radius: 10px;

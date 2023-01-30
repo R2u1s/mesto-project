@@ -1,4 +1,5 @@
 .cards__delete {
+    display:none;
     position: absolute;
     padding: 0;
     right: 20px;

@@ -1,4 +1,5 @@
-import {nameProfile,jobProfile,nameInput,jobInput,editPopup,inputParams} from '../index.js';
+import {nameProfile,jobProfile,nameInput,jobInput,editPopup,inputParams,linkAvatar,linkAvatarExist,editAvatarPopup} from '../index.js';
+import {patchProfileInfo,patchAvatar} from './api.js';
 
 export function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
@@ -18,10 +19,34 @@ export function resetPopup(popupElement) {
 
 export function editSubmit (evt) {
   evt.preventDefault(); 
-  nameProfile.textContent = nameInput.value;
-  jobProfile.textContent = jobInput.value;
-  closePopup(editPopup); 
-  evt.target.reset();
+  
+  const changeProfileInfo = () => {
+    renderLoading(evt.target,true);
+    patchProfileInfo(nameInput.value,jobInput.value).then(() => {
+      nameProfile.textContent = nameInput.value;
+      jobProfile.textContent = jobInput.value;
+      closePopup(editPopup); 
+      renderLoading(evt.target,false);
+      evt.target.reset();
+    })
+  }
+  changeProfileInfo();
+}
+
+export function avatarSubmit(evt) {
+  evt.preventDefault(); 
+
+  const changeProfileAvatar = () => {
+    renderLoading(evt.target,true);
+    patchAvatar(linkAvatar.value).then(() => {
+      linkAvatarExist.src = linkAvatar.value;
+      linkAvatarExist.alt = 'Аватар';
+      closePopup(editAvatarPopup); 
+      renderLoading(evt.target,false);
+      evt.target.reset();
+    })
+  }
+  changeProfileAvatar();
 }
 
 export const closePopupByButtons = () => {
@@ -53,6 +78,19 @@ export const closePopupByOverlayClick = (popups) => {
   });
 }
 
+let defaultValueButtonText ='';
+export function renderLoading (popupElement, isLoading) {
+  function changeButtonTextToDefault(text) {
+    buttonElement.textContent = text;
+  }
+  const buttonElement = popupElement.querySelector(inputParams.submitButtonSelector);
+  if (isLoading) {
+    defaultValueButtonText = buttonElement.textContent;
+    buttonElement.textContent = "Сохранение...";
+  } else {
+    setTimeout(changeButtonTextToDefault,300,defaultValueButtonText);
+  }
+}
 
 
 
