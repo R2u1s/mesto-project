@@ -22,13 +22,19 @@ export function editSubmit (evt) {
   
   const changeProfileInfo = () => {
     renderLoading(evt.target,true);
-    patchProfileInfo(nameInput.value,jobInput.value).then(() => {
-      nameProfile.textContent = nameInput.value;
-      jobProfile.textContent = jobInput.value;
-      closePopup(editPopup); 
-      renderLoading(evt.target,false);
-      evt.target.reset();
-    })
+    patchProfileInfo(nameInput.value,jobInput.value)
+      .then(() => {
+        nameProfile.textContent = nameInput.value;
+        jobProfile.textContent = jobInput.value;
+        closePopup(editPopup); 
+        evt.target.reset();
+      })
+      .catch((err) => {
+        console.log(err); // выводим ошибку в консоль
+      })
+      .finally(
+        renderLoading(evt.target,false)
+      )
   }
   changeProfileInfo();
 }
@@ -38,13 +44,19 @@ export function avatarSubmit(evt) {
 
   const changeProfileAvatar = () => {
     renderLoading(evt.target,true);
-    patchAvatar(linkAvatar.value).then(() => {
-      linkAvatarExist.src = linkAvatar.value;
-      linkAvatarExist.alt = 'Аватар';
-      closePopup(editAvatarPopup); 
-      renderLoading(evt.target,false);
-      evt.target.reset();
-    })
+    patchAvatar(linkAvatar.value)
+      .then(() => {
+        linkAvatarExist.src = linkAvatar.value;
+        linkAvatarExist.alt = 'Аватар';
+        closePopup(editAvatarPopup); 
+        evt.target.reset();
+      })
+      .catch((err) => {
+        console.log(err); // выводим ошибку в консоль
+      })
+      .finally(
+        renderLoading(evt.target,false)
+      )
   }
   changeProfileAvatar();
 }
@@ -88,7 +100,7 @@ export function renderLoading (popupElement, isLoading) {
     defaultValueButtonText = buttonElement.textContent;
     buttonElement.textContent = "Сохранение...";
   } else {
-    setTimeout(changeButtonTextToDefault,300,defaultValueButtonText);
+    setTimeout(changeButtonTextToDefault,1000,defaultValueButtonText);
   }
 }
 

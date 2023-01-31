@@ -2,7 +2,9 @@ import '../pages/index.css';
 import {openPopup,editSubmit,closePopupByButtons,closePopupByOverlayClick,resetPopup,avatarSubmit} from './components/modal.js';
 import {cardSubmit,newItemPopup,fillInitialCards} from './components/card.js';
 import {enableValidation,initializeValidation} from './components/validate.js';
-import {fillProfileInfo} from './components/api.js';
+import { getProfileInfo,getInitialCards } from './components/api';
+
+export var id;
 
 export const page = document.querySelector('.page');
 const popups = document.querySelectorAll('.popup');
@@ -51,10 +53,21 @@ avatarForm.addEventListener('submit', avatarSubmit);
 /* Закрытие попапов разными событиями */
 closePopupByButtons();
 closePopupByOverlayClick(popups);
-/* Заполнение информации пользователя */
-fillProfileInfo();
-/* Заполнение страницы карточками при старте страницы */
-fillInitialCards();
+
+Promise.all([getProfileInfo(), getInitialCards()])
+  .then(([profileData, cards]) => {
+    /* Заполнение информации пользователя */
+    nameProfile.textContent = profileData.name;
+    jobProfile.textContent = profileData.about;
+    linkAvatarExist.src = profileData.avatar;
+    id = profileData._id;
+    /* Заполнение страницы карточками при старте страницы */
+    fillInitialCards(cards);
+  })
+  .catch((err) => {
+    console.log(err); // выводим ошибку в консоль
+  }); 
+
 
 /* Валидация форм */
 export const inputParams = {

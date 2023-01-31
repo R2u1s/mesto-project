@@ -1,5 +1,6 @@
 import { openPopup,closePopup,renderLoading } from './modal.js';
-import { id,postCard,deleteCardApi,addLikeCard,removeLikeCard, getInitialCards } from './api.js';
+import { postCard,deleteCardApi,addLikeCard,removeLikeCard } from './api.js';
+import { id } from '../index.js';
 
 const pic1 = new URL('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg');
 const pic2 = new URL('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg');
@@ -40,11 +41,26 @@ function createCard(cardTitle, cardImageLink, cardImageAlt, ownerId, likes, card
 
   //Кнопка
   cardElement.querySelector('.cards__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('cards__like_active');
     if (!evt.target.classList.value.includes('cards__like_active')) {
-      removeLikeCard(cardElement,cardId);
+      addLikeCard(cardId)
+        .then((res) => {
+          cardElement.querySelector('.cards__like-qty').textContent = res.likes.length;
+          toggleQtyVisibility(cardElement);
+          evt.target.classList.toggle('cards__like_active');
+        })
+        .catch((err) => {
+          console.log(err); // выводим ошибку в консоль
+        }); 
     } else {
-      addLikeCard(cardElement,cardId);
+      removeLikeCard(cardId)
+        .then((res) => {
+          cardElement.querySelector('.cards__like-qty').textContent = res.likes.length;
+          toggleQtyVisibility(cardElement);
+          evt.target.classList.toggle('cards__like_active');
+        })
+        .catch((err) => {
+          console.log(err); // выводим ошибку в консоль
+        }); 
     }
   });
 
@@ -93,8 +109,12 @@ const deleteCard = (cardElement) => {
   const deleteButton = cardElement.querySelector('.cards__delete');
   deleteButton.addEventListener('click', function (evt) {
     const listItem = evt.target.closest('.cards__card');
-    listItem.remove();
-    deleteCardApi(cardElement.querySelector('#cardId').textContent);
+    
+    deleteCardApi(cardElement.querySelector('#cardId').textContent)
+      .then(listItem.remove())
+      .catch((err) => {
+        console.log(err); // выводим ошибку в консоль
+      }); 
   });
 }
 
@@ -105,23 +125,24 @@ export function cardSubmit (evt) {
 
   const getNewCardId = () => {
     renderLoading(evt.target,true);
-    postCard(nameImageInputValue,linkInputValue).then((data) => {
+    postCard(nameImageInputValue,linkInputValue)
+    .then((data) => {
       addCard(nameImageInputValue,linkInputValue,'',id,[],data._id);
       closePopup(newItemPopup);
-      renderLoading(evt.target,false);
       evt.target.reset();
     })
+    .catch((err) => {
+      console.log(err); // выводим ошибку в консоль
+    })
+    .finally(
+      renderLoading(evt.target,false)
+    )
   }
   getNewCardId();
 }
 
-export function fillInitialCards () {
-  const initialCards = () => {
-    getInitialCards().then((data) => {
-      data.reverse().forEach(function (item) {
-        addCard(item.name,item.link,item.alt,item.owner._id,item.likes,item._id);
-      });
-    });
-  }
-  initialCards();
+export function fillInitialCards (array) {
+  array.reverse().forEach(function (item) {
+    addCard(item.name,item.link,item.alt,item.owner._id,item.likes,item._id);
+  });
 }
