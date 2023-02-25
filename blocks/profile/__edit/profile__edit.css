@@ -6,7 +6,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   padding:0;
-  align-self: center;
+  align-self: end;
   width: 24px;
   height: 24px;
   grid-area: edit-button;

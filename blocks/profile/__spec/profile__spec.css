@@ -2,6 +2,7 @@
   grid-area: spec;
   max-width: 100%;
   margin:0;
+  align-self: start;
   font-size: 18px;
   line-height: 1;
   font-weight: 400;

@@ -7,5 +7,6 @@
     'avatar . name . edit-button'
     'avatar . spec spec spec'
     /120px 30px minmax(100px,100%) 18px 24px;
-  align-items: center;
+  row-gap: 18px;
+  align-items: start;
 }
