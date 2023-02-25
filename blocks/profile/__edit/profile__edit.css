@@ -9,7 +9,7 @@
   align-self: center;
   width: 24px;
   height: 24px;
-  grid-area: edit;
+  grid-area: edit-button;
   cursor: pointer;
 }
 
