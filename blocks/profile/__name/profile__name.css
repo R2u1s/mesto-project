@@ -1,7 +1,6 @@
 .profile__name {
   grid-area: name;
   margin:0;
-  max-width: min-content;
   font-size: 42px;
   line-height: 1;
   font-weight: 500;
@@ -9,20 +8,3 @@
   white-space: nowrap;
   overflow-x: clip;
 }
-
-@media screen and (max-width: 768px) {
-    .profile__name {
-      font-size: calc(15*100vw/448 + (114px/7));
-      line-height: calc(383*100vw/11200 + (3804px/175));
-      max-width: 240px;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-      .profile__name {
-        font-size: 27px;
-        line-height: 1.21;
-        margin-left: 28px;
-        max-width: 180px;
-      }
-    }

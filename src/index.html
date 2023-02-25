@@ -15,12 +15,14 @@
 
     <main class="content">
       <section class="profile">
-        <div class="profile__avatar">
-          <img src="<%=require('../images/Jacques.jpg')%>" class='profile__pic' alt="Аватар">      
+        <div class="profile__info"> 
+          <div class="profile__avatar">
+            <img src="<%=require('../images/Jacques.jpg')%>" class='profile__pic' alt="Аватар">      
+          </div>
+          <h1 class="profile__name"></h1>
+          <p class="profile__spec"></p>
+          <button type="button" class="profile__edit"></button>
         </div>
-        <h1 class="profile__name"></h1>
-        <p class="profile__spec"></p>
-        <button type="button" class="profile__edit"></button>
         <button type="button" class="profile__add"></button>
       </section>
 

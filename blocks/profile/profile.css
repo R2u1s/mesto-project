@@ -7,13 +7,7 @@
   min-height: -moz-fit-content;
   min-height: fit-content;
   display: grid;
-  grid-template: "avatar . name . edit-button . add-button" "avatar . . . . . add-button" 7px "avatar . spec spec spec . add-button"/120px 30px auto 18px 1fr 30px 150px;
+  grid-template: "info . add-button"/auto 30px 150px;
   align-items: center;
-}
-
-@media screen and (max-width: 768px) {
-  .profile {
-    flex-direction: column;
-    margin-top: 42px;
-  }
+  justify-content: space-between;
 }/*# sourceMappingURL=profile.css.map */
