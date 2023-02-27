@@ -10,4 +10,9 @@
   grid-template: "info . add-button"/auto 30px 150px;
   align-items: center;
   justify-content: space-between;
+}
+@media (max-width: 640px) {
+  .profile {
+    grid-template: "info" "." 36px "add-button"/100%;
+  }
 }/*# sourceMappingURL=profile.css.map */

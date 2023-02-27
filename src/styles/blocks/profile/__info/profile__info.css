@@ -1,12 +1,15 @@
 .profile__info {
-  margin:0;
+  margin: 0 auto;
   grid-area: info;
   justify-self: start;
-  display:grid;
-  grid-template:
-    'avatar . name . edit-button'
-    'avatar . spec spec spec'
-    /120px 30px minmax(100px,100%) 18px 24px;
+  display: grid;
+  grid-template: "avatar . name . edit-button" "avatar . spec spec spec"/120px 30px minmax(100px, 100%) 18px 24px;
   row-gap: 18px;
   align-items: start;
 }
+@media (max-width: 640px) {
+  .profile__info {
+    grid-template: "avatar avatar avatar avatar" ". . . ." 26px ". name . edit-button" ". . . ." 14px "spec spec spec spec"/28px minmax(100px, 100%) 10px 18px;
+    row-gap: 0px;
+  }
+}/*# sourceMappingURL=profile__info.css.map */

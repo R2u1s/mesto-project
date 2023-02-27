@@ -1,26 +1,27 @@
+@use '../../../abstract/mixins.scss' as *;
+
 .profile__add {
   grid-area: add-button;
   margin: 0;
   display: block;
   min-width: 150px;
   height: 50px;
-  border: none;
-  background: none;
+  border:none;
+  background:none;
   cursor: pointer;
   border: 2px solid white;
   background-image: url(../../../../images/Add.svg);
   background-size: 22px;
   background-repeat: no-repeat;
   background-position: center;
-}
-@media (max-width: 640px) {
-  .profile__add {
-    background-size: calc(1.875vw + 10px);
-    max-width: 100%;
+
+  
+  @include width-md {
+    background-size: calc(3*100vw/160 + 10px);
+    max-width: 100%; 
   }
-}
-@media (max-width: 320px) {
-  .profile__add {
+
+  @include width-min {
     background-size: 16px;
     font-size: 27px;
   }
@@ -28,4 +29,5 @@
 
 .profile__add:hover {
   opacity: 60%;
-}/*# sourceMappingURL=profile__add.css.map */
+}
+

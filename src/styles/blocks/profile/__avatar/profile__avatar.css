@@ -6,6 +6,11 @@
   max-height: 120px;
   cursor: pointer;
 }
+@media (max-width: 640px) {
+  .profile__avatar {
+    margin: 0 auto;
+  }
+}
 
 .profile__avatar:before {
   content: "";
@@ -43,10 +48,4 @@
 
 .profile__avatar:hover:after {
   opacity: 1;
-}
-
-@media screen and (max-width: 480px) {
-  .profile__avatar {
-    margin: 0 auto;
-  }
 }/*# sourceMappingURL=profile__avatar.css.map */

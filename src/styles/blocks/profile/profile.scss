@@ -1,3 +1,5 @@
+@use '../../abstract/mixins.scss' as *;
+
 .profile {
   margin: 0 auto;
   margin-top: 40px;
@@ -11,4 +13,12 @@
     / auto 30px 150px; 
   align-items: center;
   justify-content: space-between;
-}
+
+  @include width-md {
+    grid-template:
+      'info'
+      '.' 36px
+      'add-button'
+      / 100%;
+  }
+} 

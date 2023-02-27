@@ -1,23 +1,23 @@
+@use '../../../abstract/mixins.scss' as *;
+
 .profile__name {
   grid-area: name;
   align-self: end;
-  margin: 0;
+  margin:0;
   font-size: 42px;
   line-height: 0.714;
   font-weight: 500;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow-x: clip;
-}
-@media (max-width: 640px) {
-  .profile__name {
+
+  @include width-md {
     margin: 0 auto;
-    font-size: calc(4.6875vw + 12px);
+    font-size: calc(3*100vw/64 + 12px);
     max-width: 100%;
   }
-}
-@media (max-width: 320px) {
-  .profile__name {
+
+  @include width-min {
     font-size: 27px;
   }
-}/*# sourceMappingURL=profile__name.css.map */
+}
