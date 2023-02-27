@@ -1,8 +1,8 @@
 import '../pages/index.css';
-import {openPopup,editSubmit,closePopupByButtons,closePopupByOverlayClick,resetPopup,avatarSubmit} from './components/modal.js';
-import {cardSubmit,newItemPopup,fillInitialCards} from './components/card.js';
-import {enableValidation,initializeValidation} from './components/validate.js';
-import { getProfileInfo,getInitialCards } from './components/api';
+import {openPopup,editSubmit,closePopupByButtons,closePopupByOverlayClick,resetPopup,avatarSubmit} from '../components/modal.js';
+import {cardSubmit,newItemPopup,fillInitialCards} from '../components/card.js';
+import {enableValidation,initializeValidation} from '../components/validate.js';
+import { getProfileInfo,getInitialCards } from '../components/api';
 
 export var id;
 

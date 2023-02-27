@@ -1,4 +1,4 @@
-import {nameProfile,jobProfile,nameInput,jobInput,editPopup,inputParams,linkAvatar,linkAvatarExist,editAvatarPopup} from '../index.js';
+import {nameProfile,jobProfile,nameInput,jobInput,editPopup,inputParams,linkAvatar,linkAvatarExist,editAvatarPopup} from '../pages/index.js';
 import {patchProfileInfo,patchAvatar} from './api.js';
 
 export function openPopup(popupElement) {

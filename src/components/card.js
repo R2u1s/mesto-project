@@ -1,6 +1,6 @@
 import { openPopup,closePopup,renderLoading } from './modal.js';
 import { postCard,deleteCardApi,addLikeCard,removeLikeCard } from './api.js';
-import { id } from '../index.js';
+import { id } from '../pages/index.js';
 
 const pic1 = new URL('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg');
 const pic2 = new URL('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg');
