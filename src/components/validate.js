@@ -1,4 +1,4 @@
-import { inputParams } from '../pages/index.js';
+import { inputParams } from "./utils";
 
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);

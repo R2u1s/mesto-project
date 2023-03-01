@@ -3,6 +3,7 @@ import {openPopup,editSubmit,closePopupByButtons,closePopupByOverlayClick,resetP
 import {cardSubmit,newItemPopup,fillInitialCards} from '../components/card.js';
 import {enableValidation,initializeValidation} from '../components/validate.js';
 import { getProfileInfo,getInitialCards } from '../components/api';
+import { inputParams } from '../components/utils';
 
 export var id;
 
@@ -70,14 +71,4 @@ Promise.all([getProfileInfo(), getInitialCards()])
 
 
 /* Валидация форм */
-export const inputParams = {
-  allPopups: '.popup',
-  formSelector: '.popup__form',
-  formSet: '.popup__set',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-} 
 enableValidation(inputParams); 
