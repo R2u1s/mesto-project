@@ -1,4 +1,4 @@
-import {nameProfile,jobProfile,nameInput,jobInput,editPopup,linkAvatar,linkAvatarExist,editAvatarPopup} from '../pages/index.js';
+import {nameProfile,jobProfile,nameInput,jobInput,editPopup,linkAvatar,linkAvatarExist,editAvatarPopup} from './constants';
 import { inputParams } from './utils.js';
 import {patchProfileInfo,patchAvatar} from './api.js';
 
